@@ -14,33 +14,27 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import br.com.webservice.repository.CuidadorRepository;
-import br.com.webservice.repository.entity.CuidadorEntity;
+import br.com.webservice.repository.IdosoRepository;
+import br.com.webservice.repository.entity.IdosoEntity;
+
+@Path("/service/idoso")
+public class IdosoController {
 
 
-/**
- * Essa classe vai expor os nossos métodos para serem acessasdos via http
- * 
- * @Path - Caminho para a chamada da classe que vai representar o nosso serviço
- * */
-@Path("/service/cuidador")
-public class CuidadorController {
+	private final  IdosoRepository repository = new IdosoRepository();
 
-	private final  CuidadorRepository repository = new CuidadorRepository();
-
-	
 	
 	@POST
 	@Path( "/cadastrar.ws" )
 	@Produces( "application/json" )
 	@Consumes( "application/json" )
-	public String cadastrar( String cuidadorJason ) {
+	public String cadastrar( String idosoJason ) {
 		Gson gson = new Gson();
-		CuidadorEntity po = new CuidadorEntity();
+		IdosoEntity po = new IdosoEntity();
 		JsonParser parse = new JsonParser();
-		JsonObject object = parse.parse( cuidadorJason ).getAsJsonObject();
+		JsonObject object = parse.parse( idosoJason ).getAsJsonObject();
 
-		po = ( gson.fromJson( object, CuidadorEntity.class ) );
+		po = ( gson.fromJson( object, IdosoEntity.class ) );
 				
 		try {
 			
@@ -57,13 +51,13 @@ public class CuidadorController {
 	@PUT
 	@Path( "/editar.ws" )
 	@Produces( "application/json" )
-	public String editar( String cuidadorJason ) {
+	public String editar( String idosoJason ) {
 		Gson gson = new Gson();
-		CuidadorEntity po = new CuidadorEntity();
+		IdosoEntity po = new IdosoEntity();
 		JsonParser parse = new JsonParser();
-		JsonObject object = parse.parse( cuidadorJason ).getAsJsonObject();
+		JsonObject object = parse.parse( idosoJason ).getAsJsonObject();
 
-		po = ( gson.fromJson( object, CuidadorEntity.class ) );
+		po = ( gson.fromJson( object, IdosoEntity.class ) );
 				
 		try {
 
@@ -83,13 +77,13 @@ public class CuidadorController {
 	@DELETE
 	@Path( "/excluir.ws" )
 	@Produces( "application/json" )
-	public String excluir( String cuidadorJason ) {
+	public String excluir( String idosoJason ) {
 		Gson gson = new Gson();
-		CuidadorEntity po = new CuidadorEntity();
+		IdosoEntity po = new IdosoEntity();
 		JsonParser parse = new JsonParser();
-		JsonObject object = parse.parse( cuidadorJason ).getAsJsonObject();
+		JsonObject object = parse.parse( idosoJason ).getAsJsonObject();
 
-		po = ( gson.fromJson( object, CuidadorEntity.class ) );
+		po = ( gson.fromJson( object, IdosoEntity.class ) );
 				
 		try {
 
@@ -111,9 +105,9 @@ public class CuidadorController {
 	@Produces( "application/json" )	
 	public String listaTodos() {
 
-		List<CuidadorEntity> listaEntityCuidadores = repository.listaTodos();
+		List<IdosoEntity> listaEntityIdosos = repository.listaTodos();
 
-		return new Gson().toJson( listaEntityCuidadores );
+		return new Gson().toJson( listaEntityIdosos );
 
 	}
 		
@@ -121,17 +115,17 @@ public class CuidadorController {
 	@POST
 	@Path( "/listaPorCodigo.ws" )
 	@Produces( "application/json" )
-	public String listaPorCodigo(String cuidadorJason) {
+	public String listaPorCodigo(String idosoJason) {
 
-		 CuidadorEntity encontrado = null;
+		 IdosoEntity encontrado = null;
 
 		 Gson gson = new Gson();
 		try {
-			CuidadorEntity po = new CuidadorEntity();
+			IdosoEntity po = new IdosoEntity();
 			JsonParser parse = new JsonParser();
-			JsonObject object = parse.parse( cuidadorJason ).getAsJsonObject();
+			JsonObject object = parse.parse( idosoJason ).getAsJsonObject();
 
-			po = ( gson.fromJson( object, CuidadorEntity.class ) );
+			po = ( gson.fromJson( object, IdosoEntity.class ) );
 						
 			encontrado = repository.listaPorCodigo( po.getCodigo() );
 					
@@ -144,4 +138,4 @@ public class CuidadorController {
 
 	}
 
-}//Fim da classe
+}

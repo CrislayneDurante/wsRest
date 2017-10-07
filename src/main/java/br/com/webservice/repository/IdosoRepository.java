@@ -6,15 +6,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import br.com.webservice.repository.entity.CuidadorEntity;
+import br.com.webservice.repository.entity.IdosoEntity;
 
-public class CuidadorRepository {
-
+public class IdosoRepository {
+	
 	private final EntityManagerFactory entityManagerFactory;
 
 	private final EntityManager entityManager;
 
-	public CuidadorRepository(){
+	public IdosoRepository(){
 
 		/*CRIANDO O NOSSO EntityManagerFactory COM AS PORPRIEDADOS DO ARQUIVO persistence.xml */
 		this.entityManagerFactory = Persistence.createEntityManagerFactory("persistenceAux");
@@ -25,38 +25,38 @@ public class CuidadorRepository {
 	/**
 	 * CRIA UM NOVO REGISTRO NO BANCO DE DADOS
 	 * */
-	public void cadastrar(CuidadorEntity cuidadorEntity){
+	public void cadastrar(IdosoEntity idosoEntity){
 
 		this.entityManager.getTransaction().begin();
-		this.entityManager.persist(cuidadorEntity);
+		this.entityManager.persist(idosoEntity);
 		this.entityManager.getTransaction().commit();
 	}
 
 	/**
 	 * ALTERA UM REGISTRO CADASTRADO
 	 * */
-	public void alterar(CuidadorEntity cuidadorEntity){
+	public void alterar(IdosoEntity idosoEntity){
 
 		this.entityManager.getTransaction().begin();
-		this.entityManager.merge(cuidadorEntity);
+		this.entityManager.merge(idosoEntity);
 		this.entityManager.getTransaction().commit();
 	}
 
 	/**
-	 * RETORNA TODOS OS REGISTROS CADASTRADOS NO BANCO DE DADOS 
+	 * RETORNA TODOSOS REGISTROS NO BANCO DE DADOS 
 	 * */
 	@SuppressWarnings("unchecked")
-	public List<CuidadorEntity> listaTodos(){
+	public List<IdosoEntity> listaTodos(){
 
-		return this.entityManager.createQuery("SELECT * FROM CuidadorEntity ORDER BY nome").getResultList();
+		return this.entityManager.createQuery("SELECT * FROM IdosoEntity ORDER BY nome").getResultList();
 	}
 
 	/**
-	 * CONSULTA UM REGISTRO CADASTRADO PELO CÓDIGO
+	 * CONSULTA UM REGISTRO CADASTRADO PELO CODIGO
 	 * */
-	public CuidadorEntity listaPorCodigo(Integer codigo){
+	public IdosoEntity listaPorCodigo(Integer codigo){
 
-		return this.entityManager.find(CuidadorEntity.class, codigo);
+		return this.entityManager.find(IdosoEntity.class, codigo);
 	}
 	
 
@@ -65,11 +65,12 @@ public class CuidadorRepository {
 	**/
 	public void excluir(Integer codigo){
 
-		CuidadorEntity cuidador = this.listaPorCodigo(codigo);
+		IdosoEntity idoso = this.listaPorCodigo(codigo);
 
 		this.entityManager.getTransaction().begin();
-		this.entityManager.remove(cuidador);
+		this.entityManager.remove(idoso);
 		this.entityManager.getTransaction().commit();
 
 	}
+
 }//Fim da classe
