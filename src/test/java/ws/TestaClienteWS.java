@@ -12,7 +12,7 @@ import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 
-import br.com.webservice.repository.entity.PessoaEntity;
+import br.com.webservice.repository.entity.CuidadorEntity;
 
 public class TestaClienteWS{
 
@@ -35,10 +35,10 @@ public class TestaClienteWS{
 		Client client = Client.create( config );
 		WebResource service = client.resource( getBaseURI() );
 
-		PessoaEntity po = new PessoaEntity();
+		CuidadorEntity po = new CuidadorEntity();
 		po.setNome("Camila");
 		po.setNumCelular("999999999");
-		po.setCuidador(true);
+		po.setToken("9832742");;
 
 		Gson gson = new Gson();
 		String pessoaJason = gson.toJson( po );
@@ -50,7 +50,7 @@ public class TestaClienteWS{
 		System.out.println( response );
 		
 		
-		po = new PessoaEntity();
+		po = new CuidadorEntity();
 		po.setCodigo(5);
 		gson = new Gson();
 		pessoaJason = gson.toJson( po );

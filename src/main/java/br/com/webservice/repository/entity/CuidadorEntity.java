@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="pessoa")
-public class PessoaEntity {
+@Table(name="cuidador")
+public class CuidadorEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +22,8 @@ public class PessoaEntity {
 	@Column(name="numCelular")
 	private String numCelular;
 	
-	@Column(name="isCuidador")
-	private boolean isCuidador;
+	@Column(name="token")
+	private String token;
 
 	public Integer getCodigo() {
 		return codigo;
@@ -49,13 +49,12 @@ public class PessoaEntity {
 		this.numCelular = numCelular;
 	}
 
-	public boolean isCuidador() {
-		return isCuidador;
+	public String getToken() {
+		return token;
 	}
 
-	public void setCuidador(boolean isCuidador) {
-		this.isCuidador = isCuidador;
+	public void setToken(String token) {
+		this.token = token;
 	}
-
 	
 }//Fim da classe

@@ -14,8 +14,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import br.com.webservice.repository.PessoaRepository;
-import br.com.webservice.repository.entity.PessoaEntity;
+import br.com.webservice.repository.CuidadorRepository;
+import br.com.webservice.repository.entity.CuidadorEntity;
 
 
 /**
@@ -24,9 +24,9 @@ import br.com.webservice.repository.entity.PessoaEntity;
  * @Path - Caminho para a chamada da classe que vai representar o nosso serviço
  * */
 @Path("/service")
-public class ServiceController {
+public class CuidadorController {
 
-	private final  PessoaRepository repository = new PessoaRepository();
+	private final  CuidadorRepository repository = new CuidadorRepository();
 
 	
 	
@@ -34,17 +34,17 @@ public class ServiceController {
 	@Path( "/cadastrar.ws" )
 	@Produces( "application/json" )
 	@Consumes( "application/json" )
-	public String cadastrar2( String pessoaJason ) {
+	public String cadastrar( String cuidadorJason ) {
 		Gson gson = new Gson();
-		PessoaEntity po = new PessoaEntity();
+		CuidadorEntity po = new CuidadorEntity();
 		JsonParser parse = new JsonParser();
-		JsonObject object = parse.parse( pessoaJason ).getAsJsonObject();
+		JsonObject object = parse.parse( cuidadorJason ).getAsJsonObject();
 
-		po = ( gson.fromJson( object, PessoaEntity.class ) );
+		po = ( gson.fromJson( object, CuidadorEntity.class ) );
 				
 		try {
 			
-			repository.salvar(po);
+			repository.cadastrar(po);
 
 			return "Registro cadastrado com sucesso!";
 
@@ -57,13 +57,13 @@ public class ServiceController {
 	@PUT
 	@Path( "/editar.ws" )
 	@Produces( "application/json" )
-	public String editar2( String pessoaJason ) {
+	public String editar( String cuidadorJason ) {
 		Gson gson = new Gson();
-		PessoaEntity po = new PessoaEntity();
+		CuidadorEntity po = new CuidadorEntity();
 		JsonParser parse = new JsonParser();
-		JsonObject object = parse.parse( pessoaJason ).getAsJsonObject();
+		JsonObject object = parse.parse( cuidadorJason ).getAsJsonObject();
 
-		po = ( gson.fromJson( object, PessoaEntity.class ) );
+		po = ( gson.fromJson( object, CuidadorEntity.class ) );
 				
 		try {
 
@@ -83,17 +83,17 @@ public class ServiceController {
 	@DELETE
 	@Path( "/excluir.ws" )
 	@Produces( "application/json" )
-	public String excluir2( String pessoaJason ) {
+	public String excluir( String cuidadorJason ) {
 		Gson gson = new Gson();
-		PessoaEntity po = new PessoaEntity();
+		CuidadorEntity po = new CuidadorEntity();
 		JsonParser parse = new JsonParser();
-		JsonObject object = parse.parse( pessoaJason ).getAsJsonObject();
+		JsonObject object = parse.parse( cuidadorJason ).getAsJsonObject();
 
-		po = ( gson.fromJson( object, PessoaEntity.class ) );
+		po = ( gson.fromJson( object, CuidadorEntity.class ) );
 				
 		try {
 
-			repository.Excluir(po.getCodigo());
+			repository.excluir(po.getCodigo());
 
 			return "Registro alterado com sucesso!";
 
@@ -109,9 +109,9 @@ public class ServiceController {
 	@GET
 	@Path( "/buscarPessoas.ws" )
 	@Produces( "application/json" )	
-	public String buscarPessoa() {
+	public String getCuidadores() {
 
-		List<PessoaEntity> listaEntityPessoas = repository.TodasPessoas();
+		List<CuidadorEntity> listaEntityPessoas = repository.getCuidadores();
 
 		return new Gson().toJson( listaEntityPessoas );
 
@@ -121,23 +121,23 @@ public class ServiceController {
 	@POST
 	@Path( "/getPessoa.ws" )
 	@Produces( "application/json" )
-	public String GetPessoa(String pessoaJason) {
+	public String getCuidador(String cuidadorJason) {
 
-		 PessoaEntity encontrado = null;
+		 CuidadorEntity encontrado = null;
 
 		 Gson gson = new Gson();
 		try {
-			PessoaEntity po = new PessoaEntity();
+			CuidadorEntity po = new CuidadorEntity();
 			JsonParser parse = new JsonParser();
-			JsonObject object = parse.parse( pessoaJason ).getAsJsonObject();
+			JsonObject object = parse.parse( cuidadorJason ).getAsJsonObject();
 
-			po = ( gson.fromJson( object, PessoaEntity.class ) );
+			po = ( gson.fromJson( object, CuidadorEntity.class ) );
 						
-			encontrado = repository.GetPessoa( po.getCodigo() );
+			encontrado = repository.getCuidador( po.getCodigo() );
 					
 						
 		} catch ( Exception e ) {
-			return "Errono GetPessoa " + e.getMessage();
+			return "Erro no getCuidador " + e.getMessage();
 		}
 
 		return gson.toJson( encontrado );
