@@ -3,7 +3,10 @@ package br.com.webservice.controller;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
@@ -28,7 +31,7 @@ public class ServiceController {
 	
 	
 	@POST
-	@Path( "/cadastrar2.ws" )
+	@Path( "/cadastrar.ws" )
 	@Produces( "application/json" )
 	@Consumes( "application/json" )
 	public String cadastrar2( String pessoaJason ) {
@@ -41,7 +44,7 @@ public class ServiceController {
 				
 		try {
 			
-			repository.Salvar(po);
+			repository.salvar(po);
 
 			return "Registro cadastrado com sucesso!";
 
@@ -51,10 +54,9 @@ public class ServiceController {
 		}
 	}
 	
-	@POST
-	@Path( "/editar2.ws" )
+	@PUT
+	@Path( "/editar.ws" )
 	@Produces( "application/json" )
-	@Consumes( "application/json" )
 	public String editar2( String pessoaJason ) {
 		Gson gson = new Gson();
 		PessoaEntity po = new PessoaEntity();
@@ -78,10 +80,9 @@ public class ServiceController {
 	
 	
 	
-	@POST
-	@Path( "/excluir2.ws" )
+	@DELETE
+	@Path( "/excluir.ws" )
 	@Produces( "application/json" )
-	@Consumes( "application/json" )
 	public String excluir2( String pessoaJason ) {
 		Gson gson = new Gson();
 		PessoaEntity po = new PessoaEntity();
@@ -105,7 +106,7 @@ public class ServiceController {
 	
 
 	
-	@POST
+	@GET
 	@Path( "/buscarPessoas.ws" )
 	@Produces( "application/json" )	
 	public String buscarPessoa() {
@@ -120,7 +121,6 @@ public class ServiceController {
 	@POST
 	@Path( "/getPessoa.ws" )
 	@Produces( "application/json" )
-	@Consumes( "application/json" )
 	public String GetPessoa(String pessoaJason) {
 
 		 PessoaEntity encontrado = null;

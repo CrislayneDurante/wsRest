@@ -37,7 +37,8 @@ public class TestaClienteWS{
 
 		PessoaEntity po = new PessoaEntity();
 		po.setNome("Camila");
-		po.setSexo("F");
+		po.setNumCelular("999999999");
+		po.setCuidador(true);
 
 		Gson gson = new Gson();
 		String pessoaJason = gson.toJson( po );

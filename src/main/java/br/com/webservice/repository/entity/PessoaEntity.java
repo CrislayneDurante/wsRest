@@ -19,8 +19,11 @@ public class PessoaEntity {
 	@Column(name="nome")	
 	private String  nome;
 
-	@Column(name="sexo")
-	private String  sexo;
+	@Column(name="numCelular")
+	private String numCelular;
+	
+	@Column(name="isCuidador")
+	private boolean isCuidador;
 
 	public Integer getCodigo() {
 		return codigo;
@@ -38,12 +41,21 @@ public class PessoaEntity {
 		this.nome = nome;
 	}
 
-	public String getSexo() {
-		return sexo;
+	public String getNumCelular() {
+		return numCelular;
 	}
 
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
+	public void setNumCelular(String numCelular) {
+		this.numCelular = numCelular;
 	}
 
+	public boolean isCuidador() {
+		return isCuidador;
+	}
+
+	public void setCuidador(boolean isCuidador) {
+		this.isCuidador = isCuidador;
+	}
+
+	
 }//Fim da classe

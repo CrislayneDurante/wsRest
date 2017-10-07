@@ -25,7 +25,7 @@ public class PessoaRepository {
 	/**
 	 * CRIA UM NOVO REGISTRO NO BANCO DE DADOS
 	 * */
-	public void Salvar(PessoaEntity pessoaEntity){
+	public void salvar(PessoaEntity pessoaEntity){
 
 		this.entityManager.getTransaction().begin();
 		this.entityManager.persist(pessoaEntity);
