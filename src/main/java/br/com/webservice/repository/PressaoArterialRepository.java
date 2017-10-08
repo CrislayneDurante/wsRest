@@ -7,7 +7,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import br.com.webservice.repository.entity.PressaoArterialEntity;
-import br.com.webservice.repository.entity.SosEntity;
 
 public class PressaoArterialRepository {
 	

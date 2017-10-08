@@ -15,9 +15,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import br.com.webservice.repository.ItemMedicamentoRepository;
-import br.com.webservice.repository.SosRepository;
 import br.com.webservice.repository.entity.ItemMedicamentoEntity;
-import br.com.webservice.repository.entity.SosEntity;
 
 @Path("/service/itemMedicamento")
 public class ItemMedicamentoController {

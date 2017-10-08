@@ -7,7 +7,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import br.com.webservice.repository.entity.ItemGlicoseEntity;
-import br.com.webservice.repository.entity.SosEntity;
 
 public class ItemGlicoseRepository {
 	

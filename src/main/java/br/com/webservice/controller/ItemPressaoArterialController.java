@@ -15,9 +15,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import br.com.webservice.repository.ItemPressaoArterialRepository;
-import br.com.webservice.repository.SosRepository;
 import br.com.webservice.repository.entity.ItemPressaoArterialEntity;
-import br.com.webservice.repository.entity.SosEntity;
 
 @Path("/service/itempressaoarterial")
 public class ItemPressaoArterialController {

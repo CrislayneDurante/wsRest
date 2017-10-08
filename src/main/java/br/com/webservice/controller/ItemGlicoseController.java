@@ -15,9 +15,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import br.com.webservice.repository.ItemGlicoseRepository;
-import br.com.webservice.repository.SosRepository;
 import br.com.webservice.repository.entity.ItemGlicoseEntity;
-import br.com.webservice.repository.entity.SosEntity;
 
 @Path("/service/itemglicose")
 public class ItemGlicoseController {

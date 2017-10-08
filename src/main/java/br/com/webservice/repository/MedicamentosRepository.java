@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import br.com.webservice.repository.entity.CuidadorEntity;
 import br.com.webservice.repository.entity.MedicamentosEntity;
 
 public class MedicamentosRepository {
