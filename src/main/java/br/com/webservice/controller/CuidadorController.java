@@ -67,7 +67,7 @@ public class CuidadorController {
 				
 		try {
 
-			repository.alterar(po);
+			repository.editar(po);
 
 			return "Registro alterado com sucesso!";
 
@@ -80,7 +80,7 @@ public class CuidadorController {
 	
 	
 	
-	@DELETE
+	@POST
 	@Path( "/excluir.ws" )
 	@Produces( "application/json" )
 	public String excluir( String cuidadorJason ) {
@@ -106,7 +106,7 @@ public class CuidadorController {
 	
 
 	
-	@GET
+	@POST
 	@Path( "/listaTodos.ws" )
 	@Produces( "application/json" )	
 	public String listaTodos() {

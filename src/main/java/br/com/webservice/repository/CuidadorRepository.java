@@ -35,7 +35,7 @@ public class CuidadorRepository {
 	/**
 	 * ALTERA UM REGISTRO CADASTRADO
 	 * */
-	public void alterar(CuidadorEntity cuidadorEntity){
+	public void editar(CuidadorEntity cuidadorEntity){
 
 		this.entityManager.getTransaction().begin();
 		this.entityManager.merge(cuidadorEntity);
@@ -48,7 +48,7 @@ public class CuidadorRepository {
 	@SuppressWarnings("unchecked")
 	public List<CuidadorEntity> listaTodos(){
 
-		return this.entityManager.createQuery("SELECT * FROM CuidadorEntity ORDER BY nome").getResultList();
+		return this.entityManager.createQuery("SELECT c FROM CuidadorEntity c ORDER BY c.nome").getResultList();
 	}
 
 	/**
