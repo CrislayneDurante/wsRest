@@ -54,18 +54,18 @@ public class CuidadorRepository {
 	/**
 	 * CONSULTA UM REGISTRO CADASTRADO PELO CÓDIGO
 	 * */
-	public CuidadorEntity listaPorCodigo(Integer codigo){
+	public CuidadorEntity listaPorCodigo(String token){
 
-		return this.entityManager.find(CuidadorEntity.class, codigo);
+		return this.entityManager.find(CuidadorEntity.class, token);
 	}
 	
 
 	/**
 	 * EXCLUINDO UM REGISTRO PELO CÓDIGO
 	**/
-	public void excluir(Integer codigo){
+	public void excluir(String token){
 
-		CuidadorEntity cuidador = this.listaPorCodigo(codigo);
+		CuidadorEntity cuidador = this.listaPorCodigo(token);
 
 		this.entityManager.getTransaction().begin();
 		this.entityManager.remove(cuidador);

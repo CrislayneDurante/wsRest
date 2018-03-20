@@ -51,7 +51,7 @@ public class TestaClienteWS{
 		
 		
 		po = new CuidadorEntity();
-		po.setCodigo(5);
+		po.setToken("");;
 		gson = new Gson();
 		pessoaJason = gson.toJson( po );
 		

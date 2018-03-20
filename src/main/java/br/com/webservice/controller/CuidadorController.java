@@ -3,8 +3,6 @@ package br.com.webservice.controller;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -93,7 +91,7 @@ public class CuidadorController {
 				
 		try {
 
-			repository.excluir(po.getCodigo());
+			repository.excluir(po.getToken());
 
 			return "Registro alterado com sucesso!";
 
@@ -133,7 +131,7 @@ public class CuidadorController {
 
 			po = ( gson.fromJson( object, CuidadorEntity.class ) );
 						
-			encontrado = repository.listaPorCodigo( po.getCodigo() );
+			encontrado = repository.listaPorCodigo( po.getToken() );
 					
 						
 		} catch ( Exception e ) {

@@ -12,9 +12,8 @@ import javax.persistence.Table;
 public class CuidadorEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="codigo")
-	private Integer codigo;
+	@Column(name="token")
+	private String token;
 
 	@Column(name="nome")	
 	private String  nome;
@@ -22,16 +21,6 @@ public class CuidadorEntity {
 	@Column(name="numCelular")
 	private String numCelular;
 	
-	@Column(name="token")
-	private String token;
-
-	public Integer getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
 
 	public String getNome() {
 		return nome;
